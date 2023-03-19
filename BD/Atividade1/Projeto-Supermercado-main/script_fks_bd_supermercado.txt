@@ -1,0 +1,42 @@
+use supermercado;
+
+
+alter table funcionario 
+add foreign key (cod_setor) references rh_setor(cod_setor);
+
+alter table estoque 
+add foreign key (cod_prod) references produto (cod_prod);
+
+alter table mov_estoque
+add foreign key (cod_prod) references produto (cod_prod),
+add foreign key (tipo_emb) references embalagem (cod_emb),
+add foreign key (resp_mov) references funcionario (cod_func);
+
+alter table ponto_venda
+add FOREIGN key (cod_func) references funcionario (cod_func);
+
+alter table itens_venda 
+add foreign key (cod_venda) references ped_venda(cod_venda),
+add FOREIGN key (cod_prod) references produto (cod_prod);
+
+alter table ped_venda
+add foreign key (cod_cliente) references cliente (cod_cliente),
+add foreign key (cod_caixa) references ponto_venda (cod_caixa);
+
+alter table produto 
+add foreign key (cod_cat_prod) references prod_categoria(cod_cat),
+add FOREIGN key (un_prod) references unidades (cod_unid), 
+add FOREIGN KEY (cod_marca) references marca(cod_marca);
+
+alter table fornecedor 
+add foreign key (frete_padrao) references tipo_frete (cod_frete);
+
+alter table itens_compra 
+add foreign key (cod_prod) references produto (cod_prod);
+
+alter table pedido_compra
+add FOREIGN KEY (cod_func) REFERENCES funcionario (cod_func),
+add foreign key (cod_fornecedor) REFERENCES fornecedor (cod_fornecedor),
+add FOREIGN key (tipo_frete) references tipo_frete (cod_frete);
+
+

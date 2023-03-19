@@ -1,0 +1,136 @@
+
+use supermercado; 
+
+create table rh_setor (
+    cod_setor int PRIMARY KEY AUTO_INCREMENT,
+    nome_setor varchar(50),
+    NR_func int, 
+    custo_setor double); #ok
+
+
+create table funcionario (
+    cod_func int primary key AUTO_INCREMENT,
+    nome_func varchar(120),
+    rg_func int,
+    ocupacao varchar(50),
+    cpf int,
+    cod_setor int,
+    salario double); #ok
+    
+ create table estoque (
+     cod_estoque int PRIMARY key AUTO_INCREMENT,
+     qtd_estoque int,
+     cod_prod int); #ok
+     
+create table mov_estoque (
+    cod_mov_est int PRIMARY key AUTO_INCREMENT,
+    resp_mov int,
+    cod_prod int,
+    tipo_mov boolean,
+    qtd_itens int,
+    tipo_emb int,
+	validade_lote date); #ok
+    
+
+create table ponto_venda (
+    cod_caixa int PRIMARY key AUTO_INCREMENT,
+    cod_func int,
+    stat_pv boolean); #ok
+    
+create table cliente (
+    cod_cliente int AUTO_INCREMENT PRIMARY key, 
+    cpf INT,
+    nome varchar (150));
+    
+create table ped_venda (
+    cod_venda int PRIMARY KEY AUTO_INCREMENT,
+    cliente_cadastrado boolean,
+    cpf_nf boolean,
+    cpf_cliente int,
+    cod_cliente int,
+    nome_cliente int,
+    valor_tot double,
+    cod_caixa int); #ok
+    
+	create table itens_venda (
+    cod_venda int, 
+    cod_item int AUTO_INCREMENT PRIMARY key,
+    cod_prod int, 
+    nome_prod varchar(250), 
+    qtd_venda float,
+    preco_prod float, 
+    un_prod char(2)); #ok
+    
+create table embalagem (
+    cod_emb int auto_increment primary key,
+    qtd_prod float,
+    un_prod  char(2)
+     ); #ok
+    
+create table produto (
+    cod_prod int AUTO_INCREMENT PRIMARY KEY, 
+    nome_prod varchar(250),
+    cod_marca int,
+    marca varchar(100),
+    qtd_estoque float,
+    valor_prod float,
+    cod_cat_prod int,
+    cat_prod int,
+    cod_barras_prod int, 
+    un_prod int
+    ); #ok
+    
+
+create table unidades (
+    cod_unid int auto_increment primary key,
+    nome_unid char(2)
+    ); #ok
+
+    create table prod_categoria (
+        cod_cat int AUTO_INCREMENT PRIMARY KEY,
+        nome_categoria varchar(100)
+        ); #ok
+    
+create table pedido_compra (
+    cod_compra int AUTO_INCREMENT PRIMARY KEY,
+    cod_func int,
+    cod_fornecedor int,
+    valor_tot_compra double,
+    tipo_frete int,
+    valor_frete double,
+    stat_ped_compra int,
+    nf_ped bigint
+	); #ok
+    
+    
+create table fornecedor (
+    cod_fornecedor int AUTO_INCREMENT PRIMARY KEY,
+    razao_fornecedor varchar(250),
+    fantasia_fornecedor varchar(250),
+    valor_frete float,
+    cnpj_fornecedor int,
+    frete_padrao INT,
+	cidade_fornecedor varchar (180),
+	est_fornecedor char(2),
+	end_fornecedor varchar(250),
+	cep_fornecedor int
+); #ok
+
+create table tipo_frete (
+cod_frete int auto_increment primary key,
+Descr_tipo_frete varchar(100)
+); #ok
+
+create table itens_compra (
+    cod_item int PRIMARY KEY AUTO_INCREMENT,
+    cod_prod int,
+    descr_prod varchar (250),
+    vr_unit_item float,
+    qtd_item float,
+    un_item char(2)
+    ); #ok
+
+create table marca (
+cod_marca int primary key auto_increment,
+nome_marca varchar (250)
+); #ok
