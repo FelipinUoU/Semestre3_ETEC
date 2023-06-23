@@ -1,0 +1,1 @@
+Se eu não me engano, precisava criar uma conta no site, e só isso. Se quiser, pode enviar esses prints, mas saiba que meu nome tá ali encima. 
